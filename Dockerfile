@@ -1,8 +1,10 @@
 FROM greyltc/archlinux-aur:yay
 
-# Install dependencies
-RUN sudo -u ab -D~ bash -c "yay --quiet -Syyu --noconfirm"
-RUN sudo -u ab -D~ bash -c "yay --quiet -S --noconfirm nano openssh wget cmake mtools dtc uboot-tools qemu-headless qemu-headless-arch-extra libpulse sdl2 libpng12 dosfstools openssh bridge-utils net-tools dnsmasq"
+# Update and install dependencies
+RUN pacman --quiet -Syyu --noconfirm \
+    && pacman --quiet -S --noconfirm nano openssh wget cmake mtools dtc uboot-tools qemu-headless qemu-headless-arch-extra libpulse sdl2 libpng12 dosfstools openssh bridge-utils net-tools dnsmasq
+
+# Install AUR dependencies
 RUN sudo -u ab -D~ bash -c "yay --quiet -S --noconfirm arm-linux-gnueabihf-gcc75-linaro-bin"
 
 # Enable and setup ssh
