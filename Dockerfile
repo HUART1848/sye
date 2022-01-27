@@ -29,7 +29,7 @@ RUN sed -i \
 EXPOSE 22
 
 # Copy lab retrieval utility
-COPY retrieve_lab /usr/bin
+COPY scripts/retrieve_lab.sh /usr/bin
 
 # Run openssh daemon
 CMD ["/usr/sbin/sshd", "-D"]
